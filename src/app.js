@@ -1,7 +1,9 @@
-var Koa = require("koa");
-var bodyParser = require("koa-bodyparser");
+const Koa = require('koa');
+const bodyParser = require('koa-bodyparser');
+const data = require('../data/echart');
+// console.log('data',data)
 
-var app = new Koa();
+const app = new Koa();
 app.use(bodyParser());
 app.use(async (ctx, next)=> {
 	ctx.set('Access-Control-Allow-Origin', '*');
@@ -10,7 +12,7 @@ app.use(async (ctx, next)=> {
 	await next();
   });
 app.use(async (ctx) => {
-	ctx.body = ctx.request.body;
+	ctx.body = data
 });
 
 app.listen(4000);
